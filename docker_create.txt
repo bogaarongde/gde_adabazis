@@ -1,0 +1,8 @@
+docker pull postgres:latest
+docker run --name pg2 -e POSTGRES_PASSWORD=postgres -p 5488:5432 -d postgres:latest
+docker stop pg2
+docker start pg2
+docker exec -it pg2 psql -U postgres
+
+select version();
+
