@@ -61,10 +61,10 @@ INSERT INTO Subjects (subject_id, subject_name) VALUES
 CREATE TABLE TeacherSubjects (
     subject_id INT NOT NULL,
     teacher_id INT NOT NULL REFERENCES Teachers(teacher_id),
-    PRIMARY KEY (teacher_id, class_id)
+    PRIMARY KEY (teacher_id, subject_id)
 );
 
-INSERT INTO TeacherSubjects (class_id, teacher_id, subject) VALUES
+INSERT INTO TeacherSubjects (subject_id, teacher_id) VALUES
     (101, 1),
     (102, 1),
     (103, 2),
