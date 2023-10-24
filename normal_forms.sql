@@ -26,16 +26,16 @@ Nem 2. NF
 CREATE TABLE TeachersSubjects (
     class_id INT NOT NULL,
     teacher_id INT NOT NULL,
-    teacher_name VARCHAR(255) NOT NULL,
     subject VARCHAR(255) NOT NULL,
+    teacher_name VARCHAR(255) NOT NULL,
     PRIMARY KEY (teacher_id, class_id)
 );
 
-INSERT INTO TeachersSubjects (class_id,teacher_id, teacher_name, subject) VALUES
-    (101, 1, 'Mr. Smith' 'Mathematics'),
-    (102, 1, 'Mr. Smith' 'Mathematics'),
-    (103, 2, 'Mrs. Jones','English'),
-    (104, 2, 'Mrs. Jones','English');
+INSERT INTO TeachersSubjects (class_id,teacher_id,subject,teacher_name) VALUES
+    (101, 1, 'Mathematics','Mr. Smith'),
+    (102, 1, 'Algebra','Mr. Smith'),
+    (103, 2, 'English', 'Mrs. Jones'),
+    (101, 2, 'Mathematics', 'Mrs. Jones');
 
 2. NF
 
@@ -44,21 +44,31 @@ CREATE TABLE Teachers (
     teacher_name VARCHAR(255) NOT NULL
 );
 
+CREATE TABLE Subjects (
+    subject_id INT PRIMARY KEY,
+    subject_name VARCHAR(255) NOT NULL
+);
+
 INSERT INTO Teachers (teacher_id, teacher_name) VALUES
     (1, 'Mr. Smith'),
     (2, 'Mrs. Jones');
+
+INSERT INTO Subjects (subject_id, subject_name) VALUES
+    (101, 'Mathematics'),
+    (102, 'Algebra'),
+    (103, 'English');
+
 CREATE TABLE TeacherSubjects (
-    class_id INT NOT NULL,
+    subject_id INT NOT NULL,
     teacher_id INT NOT NULL REFERENCES Teachers(teacher_id),
-    subject VARCHAR(255) NOT NULL,
     PRIMARY KEY (teacher_id, class_id)
 );
 
 INSERT INTO TeacherSubjects (class_id, teacher_id, subject) VALUES
-    (101, 1, 'Mathematics'),
-    (102, 1, 'Mathematics'),
-    (103, 2, 'English'),
-    (104, 2, 'English');
+    (101, 1),
+    (102, 1),
+    (103, 2),
+    (101, 2);
 
 Nem 3. NF
 CREATE TABLE employees (
