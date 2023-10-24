@@ -24,14 +24,14 @@ INSERT INTO order_items (order_id, item, quantity) VALUES (1, 'apple', 3), (1, '
 
 Nem 2. NF
 CREATE TABLE TeachersSubjects (
-    class_id INT NOT NULL,
+    subject_id INT NOT NULL,
     teacher_id INT NOT NULL,
     subject VARCHAR(255) NOT NULL,
     teacher_name VARCHAR(255) NOT NULL,
-    PRIMARY KEY (teacher_id, class_id)
+    PRIMARY KEY (teacher_id, subject_id)
 );
 
-INSERT INTO TeachersSubjects (class_id,teacher_id,subject,teacher_name) VALUES
+INSERT INTO TeachersSubjects (subject_id,teacher_id,subject,teacher_name) VALUES
     (101, 1, 'Mathematics','Mr. Smith'),
     (102, 1, 'Algebra','Mr. Smith'),
     (103, 2, 'English', 'Mrs. Jones'),
