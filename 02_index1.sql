@@ -30,3 +30,9 @@ explain select * from test_table where name = 'ef86aad674759fb5ecffc363cc7ac8b3'
 
 -- nem használja az indexet, mert úgyis az egész tábla kell kb
 explain analyze select name from test_table where id > 2000;
+
+
+-- index info:
+CREATE EXTENSION pageinspect
+
+select * from bt_page_items('test_table_t_idx', 13) limit 5;

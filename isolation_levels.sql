@@ -4,7 +4,7 @@
 CREATE TABLE items (
     id serial PRIMARY KEY ,
     item_name varchar(255),
-    stock int
+    stock int default 10
 );
 insert into items (item_name) values ('aso');
 insert into items (item_name) values ('kapa');
@@ -62,9 +62,17 @@ COMMIT;
 SELECT * FROM items WHERE id = 1;
 COMMIT;
 
+5. LOST UPDATE
+-- Console 1
+
+SELECT stock from items where id=1;
+UPDATE items set stock=100+10 where id=1;
+
+-- Console 2
+UPDATE items set stock=100+20 where id=1;
 
 
-5. PHANTOM READ
+6. PHANTOM READ
 
 -- Console 1
 BEGIN TRANSACTION;
@@ -78,7 +86,7 @@ SELECT sum(stock) FROM items WHERE stock >10;
 COMMIT;
 
 
-5. NON-REPEATABLE READ
+7. NON-REPEATABLE READ
 
 -- Console 1
 BEGIN TRANSACTION;
@@ -91,22 +99,3 @@ UPDATE items SET stock=50 WHERE id=1;
 SELECT * FROM items WHERE stock >10;
 COMMIT;
 
-6. SERIALZATION ANOMALY
-
--- Transaction 1
-BEGIN TRANSACTION ISOLATION LEVEL SERIALIZABLE;
-select * FROM items;
-
--- Transaction 2
-BEGIN TRANSACTION ISOLATION LEVEL SERIALIZABLE;
-select * FROM items;
-update items SET stock =stock+10 where id=5;
--- Transaction 1
-select * FROM items;
-update items SET stock =stock+10 where id=5;
-
--- Transaction 2
-COMMIT;
-
--- Transaction 1
-COMMIT;
