@@ -21,6 +21,6 @@ SELECT pg_size_pretty(pg_relation_size('test_brin'))               AS table_size
        pg_size_pretty(pg_indexes_size('test_brin'))     AS full_index_size;
 
 SELECT pg_size_pretty(pg_relation_size('test_brin'))               AS table_size,
-       pg_size_pretty(pg_indexes_size('idx_btree_event_time'))     AS btree_size,
+       pg_size_pretty(pg_relation_size('idx_btree_event_time'))     AS btree_size,
        pg_size_pretty(pg_relation_size('idx_brin_event_time'))  AS brin_size;
 
