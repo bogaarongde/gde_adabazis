@@ -26,10 +26,10 @@ CREATE TABLE order_groups (
     order_date TIMESTAMP NOT NULL
 );
 
-INSERT INTO order_groups (order_date)
-SELECT
-    timestamp '2023-01-01 10:00:00' + random() * (timestamp '2023-12-31 10:00:00' - timestamp '2023-01-01 10:00:00')
-FROM generate_series(1,1000);
+--INSERT INTO order_groups (order_date)
+--SELECT
+--    timestamp '2023-01-01 10:00:00' + random() * (timestamp '2023-12-31 10:00:00' - timestamp '2023-01-01 10:00:00')
+--FROM generate_series(1,1000);
 
 
 -- Felhasználók

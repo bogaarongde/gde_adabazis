@@ -53,3 +53,7 @@ explain analyze select strtext from test_table where id > 2000;
 CREATE EXTENSION pageinspect
 
 select * from bt_page_items('test_table_t_idx', 13) limit 5;
+
+
+-- Buffers
+explain (analyze,buffers) SELECT * FROM test_table where t>20;

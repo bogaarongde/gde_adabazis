@@ -3,15 +3,15 @@ create table test_1 (t int);
 insert into test_1(t) select random()*100 from generate_series(1,1000000);
 
 -- karakterek generálása
-CREATE TABLE lego (
+CREATE TABLE lego_zsuzsi (
 	id serial4 NOT NULL,
 	szam int NOT NULL,
 	nev text NOT NULL,
 	szin text NOT NULL,
-	CONSTRAINT lego_pkey PRIMARY KEY (id)
+	CONSTRAINT lego_zsuzsi_pkey PRIMARY KEY (id)
 );
 
-INSERT INTO lego(szam, nev, szin)
+INSERT INTO lego_zsuzsi(szam, nev, szin)
 SELECT
   random() * 100,
   LEFT(md5(random()::text), 6),
@@ -46,3 +46,5 @@ SELECT
     END
   END
 FROM generate_series(1, 10000);
+
+--SELECT * from lego_zsuzsi JOIN lego_tomi lt on lego_zsuzsi.szin = lt.szin;
