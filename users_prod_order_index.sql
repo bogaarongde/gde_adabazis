@@ -10,6 +10,10 @@ CREATE TABLE products (
     price DECIMAL NOT NULL
 );
 
+CREATE TABLE order_groups (
+    order_group_id SERIAL PRIMARY KEY,
+    order_date TIMESTAMP NOT NULL
+);
 CREATE TABLE orders (
     order_id SERIAL PRIMARY KEY,
     user_id INT NOT NULL,
@@ -20,11 +24,7 @@ CREATE TABLE orders (
     FOREIGN KEY (order_group_id) REFERENCES order_groups(order_group_id)
 );
 
--- Order groups tábla, amely csoportosítja az ordereket
-CREATE TABLE order_groups (
-    order_group_id SERIAL PRIMARY KEY,
-    order_date TIMESTAMP NOT NULL
-);
+
 
 --INSERT INTO order_groups (order_date)
 --SELECT

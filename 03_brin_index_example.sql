@@ -6,8 +6,8 @@ CREATE TABLE test_brin (
 
 INSERT INTO test_brin (event_time, event_value)
 SELECT
-    (current_date - interval '1 day' * generate_series(0, 999)) as event_time,
-    generate_series(1, 1000) as event_value;
+    (current_date - interval '1 day' * generate_series(0, 99999)) as event_time,
+    generate_series(1, 100000) as event_value;
 
 CREATE INDEX idx_brin_event_time ON test_brin USING brin(event_time);
 

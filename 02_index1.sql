@@ -8,7 +8,7 @@ CREATE TABLE test_table (
 
 INSERT INTO test_table(t, strtext)
 SELECT random() * 100, LEFT(md5(random()::text), 6)
-FROM generate_series(1, 100000);
+FROM generate_series(1, 1000000);
 
 
 
