@@ -13,12 +13,18 @@ VALUES
   ('Bob Johnson', 60000.00);
 
 
-CREATE OR REPLACE PROCEDURE calculate_bonus(IN emp_id INT, IN base_salary DECIMAL) AS $$
+CREATE OR REPLACE PROCEDURE calculate_bonus2(IN in_employee_id NUMERIC) AS $$
+DECLARE
+    employee_salary DECIMAL;
 BEGIN
-  -- Az IN paraméterek használata a számításokban
-  RAISE NOTICE 'bonus: %',base_salary * 0.05;
+  SELECT INTO employee_salary salary FROM employees where  employee_id = in_employee_id;
+  RAISE NOTICE 'bonus: %',employee_salary * 0.05;
 END;
 $$ LANGUAGE plpgsql;
+
+-- IN paraméterek használata
+CALL calculate_bonus2( 50000);
+
 
 CREATE OR REPLACE PROCEDURE get_employee_name_and_salary(IN emp_id NUMERIC, OUT emp_name VARCHAR, OUT emp_salary DECIMAL) AS $$
 BEGIN
@@ -36,8 +42,6 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- IN paraméterek használata
-CALL calculate_bonus(101, 50000);
 
 -- OUT paraméterek használata
 DO $$
