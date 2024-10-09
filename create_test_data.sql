@@ -1,6 +1,6 @@
 -- sima számok
-create table test_1 (t int);
-insert into test_1(t) select random()*100 from generate_series(1,1000000);
+create table test_1 (t int,k int);
+insert into test_1(t,k) select random()*100,random()*100 from generate_series(1,1000000);
 
 -- karakterek generálása
 CREATE TABLE lego_zsuzsi (
