@@ -20,7 +20,7 @@ CREATE TABLE Products (
     supplier_id INT REFERENCES Suppliers(supplier_id)
 );
 
-INSERT INTO Products (name, price, supplier_id) VALUES
+INSERT INTO Products (name, price, quantity, supplier_id) VALUES
 ('Tomato', 2.5,10, 1),
 ('Banana', 1.2,20, 2);
 
